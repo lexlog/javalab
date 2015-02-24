@@ -1,0 +1,15 @@
+package first_task;
+import java.util.*;
+
+public class det {
+	public static void main(String[] args) {
+		StringBuilder s = new StringBuilder("a awe1231asd asd ");
+		int a=(int)s.length();
+		StringBuilder s1= new StringBuilder(s.replace(1,a," "));
+		System.out.println(s1);
+		
+		
+		
+	}
+
+}

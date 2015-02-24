@@ -1,0 +1,30 @@
+package first_task;
+import java.util.Scanner;
+
+public class det {
+	public static void main(String[] args) {
+		/*StringBuilder ss = new StringBuilder();
+		int sumLen=0,i=0;
+		while(sumLen<63) {
+			sumLen+=args[i].length();
+			
+			ss.append(args[i]);
+			i++;
+		}
+		*/
+		
+	/*Scanner sc = new Scanner(System.in);
+		String s = sc.nextLine();
+		String str2 = s.substring(1,63);
+	*/
+		StringBuilder str1= new StringBuilder("\ta B c\n d e\t");
+		String str2 = str1.toString();
+		str2 = str2.replaceAll(" ", ""); //удаление всех пробелов
+		str2 = str2.replaceAll("\n", ""); // удаление всех переносов строки
+		str2 = str2.toLowerCase(); // преобразование в нижний регистр
+		str2 = str2.trim(); //удаление табуляции с начала и конца строки 
+		
+		System.out.println(str2);		
+	}
+
+}

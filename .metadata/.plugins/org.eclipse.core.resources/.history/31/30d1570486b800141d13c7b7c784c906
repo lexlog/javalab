@@ -1,0 +1,19 @@
+package first_task;
+import java.util.*;
+
+public class det {
+	public static void main(String[] args) {
+		//StringBuilder s = new StringBuilder("abwe1231asd asd ");
+		//int a=(int)s.length();
+		//StringBuilder s1= new StringBuilder(s.replace(1,20," "));
+		String a = "a b c\n d e";
+		System.out.println(a);
+		String b = a.replaceAll(" ", "");
+
+		System.out.println(b);
+		
+		
+		
+	}
+
+}

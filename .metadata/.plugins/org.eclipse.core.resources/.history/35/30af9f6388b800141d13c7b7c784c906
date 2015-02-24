@@ -1,0 +1,20 @@
+package first_task;
+import java.util.*;
+
+public class det {
+	public static void main(String[] args) {
+		StringBuilder str2= new StringBuilder("\ta B c\n d e\t");
+		str2.toString();
+		System.out.println(a);
+		str2 = str2.replaceAll(" ", ""); //удаление всех пробелов
+		str2 = str2.replaceAll("\n", ""); // удаление всех переносов строки
+		str2 = str2.toLowerCase(); // преобразование в нижний регистр
+		str2 = str2.trim(); //удаление табуляции с начала и конца строки 
+		
+		System.out.println(a);
+		
+		
+		
+	}
+
+}

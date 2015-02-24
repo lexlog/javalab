@@ -1,0 +1,23 @@
+package first_task;
+import java.util.*;
+
+public class det {
+	public static void main(String[] args) {
+		//StringBuilder s = new StringBuilder("abwe1231asd asd ");
+		//int a=(int)s.length();
+		//StringBuilder s1= new StringBuilder(s.replace(1,20," "));
+		String a = "\na b c\n d e";
+		System.out.println(a);
+		a = a.replaceAll(" ", "");
+		a = a.replaceAll("\n", "");
+		if (Character.isWhitespace(a.charAt(0))) 
+		{
+			System.out.println("lool");
+		}
+		System.out.println(a);
+		
+		
+		
+	}
+
+}
