@@ -1,0 +1,7 @@
+package third_task;
+
+public class Client {
+	private int howMuchOil;
+	
+
+}
