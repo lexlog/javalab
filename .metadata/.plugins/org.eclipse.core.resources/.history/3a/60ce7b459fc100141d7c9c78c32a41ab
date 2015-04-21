@@ -1,0 +1,12 @@
+package third_task;
+
+public class MainClass {
+	public static void main(String[] args) {
+		Client a = new Client(10);
+		new Thread(a).start();
+		Pump igor = new Pump(23);
+		a.setPump(igor);
+		igor.setClient(a);
+	}
+
+}

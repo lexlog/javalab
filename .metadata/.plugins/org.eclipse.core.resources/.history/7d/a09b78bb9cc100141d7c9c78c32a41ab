@@ -1,0 +1,9 @@
+package third_task;
+
+public class Pump {
+	private int oilSum;
+	public Pump(int oilSum) {
+		this.oilSum = oilSum;	
+	}
+	
+}

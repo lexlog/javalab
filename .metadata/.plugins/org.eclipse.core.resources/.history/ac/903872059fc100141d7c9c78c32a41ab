@@ -1,0 +1,21 @@
+package third_task;
+
+public class Pump {
+	private int oilSum;
+	private Client currentClient = null;
+
+	public Pump(int oilSum) {
+		this.oilSum = oilSum;
+	}
+
+	public void setClient(Client client) {
+		currentClient = client;
+	}
+
+	public void pushOil(int volume) {
+		for (int i = 0; i < volume; i++) {
+			currentClient.increaseVolume();
+		}
+	}
+
+}

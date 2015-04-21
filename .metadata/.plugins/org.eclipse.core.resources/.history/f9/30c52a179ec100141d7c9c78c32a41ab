@@ -1,0 +1,49 @@
+package third_task;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public  class Client implements Runnable{
+	private int money;
+	private volatile int volumeOfOil;
+	private Pump pump;
+	private static Lock lock = new ReentrantLock();
+	public Client (int money) {
+		this.money = money;
+		volumeOfOil = 0;
+	}
+	
+	public void increaseVolume(){
+		System.out.println(++volumeOfOil);
+	}
+	public void setPump(Pump pump){
+		this.pump = pump;
+	}
+	
+	@Override
+	public void run() {
+			while(pump == null){
+				if(lock.tryLock()){
+					try{
+				try {
+					Thread.sleep(100);
+					System.out.println(money);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				}
+				finally{
+					lock.unlock();
+				}
+			}
+			while(volumeOfOil != 100){
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+	}
+
+}

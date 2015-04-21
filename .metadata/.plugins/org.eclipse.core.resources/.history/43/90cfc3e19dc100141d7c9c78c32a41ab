@@ -1,0 +1,9 @@
+package third_task;
+
+public class Host {
+	int pumpNumber;
+	public Host(int pumpNumber){
+		this.pumpNumber=pumpNumber;	
+	}
+
+}

@@ -1,0 +1,14 @@
+package third_task;
+
+public class Client {
+	private int money;
+	private volatile int volumeOfOil;
+	public Client (int money) {
+		this.money = money;
+	}
+	
+	public void increaseVolume(){
+		System.out.println(++volumeOfOil);
+	}
+
+}
