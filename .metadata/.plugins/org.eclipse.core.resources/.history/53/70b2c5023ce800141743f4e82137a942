@@ -1,7 +1,7 @@
 package third_task;
 
 abstract class Resource {
-	int type;
+	int type;//тип топлива
 	final int max = 100;
 	int curAmout = max;
 	
@@ -10,14 +10,14 @@ abstract class Resource {
 		
 		if (curAmout >= amount){
 			curAmout -= amount;
-			return amount;
+			return amount;//сколько смогли взять
 		}
 		int diff = curAmout;
 		curAmout = 0;
 		return diff;
 	}
 	
-	synchronized void refill(){ 
+	synchronized void refill(){ //перезаправка колонки
 		curAmout = max;
 	}
 }

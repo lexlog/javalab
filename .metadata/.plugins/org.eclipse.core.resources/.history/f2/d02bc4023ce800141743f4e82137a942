@@ -19,19 +19,19 @@ public class Car implements Runnable{
 		Gas d;
 		int receivedAmount;
 		
-		d = adm.serve(gasNeeded, gasType);
+		d = adm.serve(gasNeeded, gasType);//берем номер колонки
 		
-		receivedAmount = d.drain(gasNeeded);
+		receivedAmount = d.drain(gasNeeded);//заливаем 
 		System.out.println(id + ": Client drained "+receivedAmount+" of fuel");
 					
-		while (receivedAmount != gasNeeded){
-			gasNeeded = gasNeeded - receivedAmount;
+		while (receivedAmount != gasNeeded){//если недолили
+			gasNeeded = gasNeeded - receivedAmount;//сколько недолили
 			System.out.println(id + ": Client needs "+gasNeeded+" more gas");
-			adm.complain(d);
+			adm.complain(d);//жалуемся
 			System.out.println(id + ": Client complained to administrator");
 				
-			receivedAmount = d.drain(gasNeeded);
-			System.out.println(id + ": Client drained "+receivedAmount+" of fuel");		
+			receivedAmount = d.drain(gasNeeded);//доливаем
+			System.out.println(id + ": Client drained "+receivedAmount+" of fuel");		//если снова не долили, обратно в while	
 		}
 		
 		System.out.println(id + ": Client served");

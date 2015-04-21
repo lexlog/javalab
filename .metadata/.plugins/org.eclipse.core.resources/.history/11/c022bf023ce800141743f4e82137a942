@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Administrator implements Runnable{
-	BlockingQueue<Gas> dispensers = new LinkedBlockingQueue<Gas>();
+	BlockingQueue<Gas> dispensers = new LinkedBlockingQueue<Gas>();//блокир массив колонок
 	
 	
 	public Administrator() throws InterruptedException {
@@ -15,14 +15,14 @@ public class Administrator implements Runnable{
 	
 	@Override
 	public void run() {		
-		while(!Thread.interrupted()){
+		while(!Thread.interrupted()){//будит потоки, которые заблокировались с этим объектом
 			synchronized (this) {
 				this.notify();
 			}
 		}
 	}
 	
-	public synchronized Gas serve(int Amount, int Type){ 
+	public synchronized Gas serve(int Amount, int Type){ //выдача колонки клиенту
 		for(Gas d : dispensers){
 			if (d.type == Type){
 				return d;
