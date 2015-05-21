@@ -1,0 +1,23 @@
+package third_test;
+
+public class Admin implements Runnable{
+
+	@Override
+	public void run() {
+		
+		
+	}
+	
+	public Admin () {
+		System.out.println("Administrator is ready");
+		Pump pump1=new Pump(1);
+		Pump pump2=new Pump(2);
+		Pump pump3=new Pump(3);
+	}
+	
+	public int payment(int money, int id) {
+		int gasNeeded=(int)money/30;
+		System.out.println("Client "+id+"need "+gasNeeded+"oil");
+		return gasNeeded;	
+	}
+}

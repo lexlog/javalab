@@ -1,0 +1,15 @@
+package third_test;
+
+public class Car implements Runnable {
+	
+	public Car(int Money) {
+		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

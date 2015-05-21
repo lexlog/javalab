@@ -1,0 +1,42 @@
+package third_task;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+public class Administrator implements Runnable{
+	BlockingQueue<Gas> dispensers = new LinkedBlockingQueue<Gas>(); //блокирующий массив колонок
+	
+	
+	public Administrator() throws InterruptedException {
+		dispensers.put(new Gas(1));
+		dispensers.put(new Gas(2));
+		dispensers.put(new Gas(3));
+	}
+	
+	@Override
+	public void run() {		
+		/*while(!Thread.interrupted()){
+			synchronized (this) {
+				this.notify();
+			}
+		}*/
+	}
+	
+	public Gas serve(int Amount, int Type){  //обслуживание клиента 
+		for(Gas d : dispensers){
+			if (d.type == Type){
+				return d;
+			}
+		}
+		return null;
+	}
+	
+	public void complain(Gas d){
+		d.refill();
+	}
+}
+//если убрать все синхронайзд ничего не изменится
+//нет обращения машин к разделяемым ресурсам
+//заплатить операцию
+//поток кассира должен изменить состояние станции(вкл насос)
+//поток к потоку

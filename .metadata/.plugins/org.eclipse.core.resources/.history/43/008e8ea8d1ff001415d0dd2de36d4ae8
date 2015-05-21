@@ -1,0 +1,17 @@
+package third_test;
+
+public class Car implements Runnable {
+	int money;
+	final int id = money; 
+	
+	public Car(int m) {
+		
+	}
+
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

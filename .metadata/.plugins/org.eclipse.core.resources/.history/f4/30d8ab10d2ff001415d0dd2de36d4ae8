@@ -1,0 +1,20 @@
+package third_test;
+
+import java.util.Random;
+
+public class Car implements Runnable {
+	int money;
+	final int id = money; 
+	int PumpNumber=(new Random()).nextInt(10)+1; 
+	
+	public Car(int m) {
+		System.out.println("Hi. I'm from Pump №"+PumpNumber+", have "+money+" money points");
+	}
+
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

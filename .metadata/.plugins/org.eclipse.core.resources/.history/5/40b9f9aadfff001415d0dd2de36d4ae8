@@ -1,0 +1,48 @@
+package third_test;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import third_test.Pump;
+
+public class Admin implements Runnable{
+
+	BlockingQueue<Pump> dispensers = new LinkedBlockingQueue<Pump>();
+	
+	@Override
+	public void run() {
+		
+		
+	}
+	
+	public Admin () throws InterruptedException {
+		System.out.println("Administrator is ready");
+		dispensers.put(new Pump(1));
+		dispensers.put(new Pump(2));
+		dispensers.put(new Pump(3));
+	}
+	
+	public void payment(int money, int id,int pumpNumb) {
+		int gasNeeded=(int)money/30;
+		System.out.println("Adm: Client "+id+" paid, needs "+gasNeeded+" litres of oil");
+		Pump d=activatePump(pumpNumb);
+		int receivedAmout=d.drain(gasNeeded);
+		gasNeeded = gasNeeded - receivedAmout;
+		while (receivedAmout != gasNeeded) {
+			d.refill();
+			receivedAmout=d.drain(gasNeeded);
+			gasNeeded = gasNeeded - receivedAmout;
+		}
+		
+	}
+	
+	public Pump activatePump(int number) {
+		for(Pump d : dispensers) {		
+			if (d.number == number){
+				return d;
+			}
+		}
+		return null;
+	}
+	
+}

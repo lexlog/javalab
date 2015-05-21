@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Administrator implements Runnable{
-	BlockingQueue<Gas> dispensers = new LinkedBlockingQueue<Gas>();
+	BlockingQueue<Gas> dispensers = new LinkedBlockingQueue<Gas>(); //блокирующий массив колонок
 	
 	
 	public Administrator() throws InterruptedException {
@@ -15,14 +15,14 @@ public class Administrator implements Runnable{
 	
 	@Override
 	public void run() {		
-		while(!Thread.interrupted()){
-			synchronized (this) {
-				this.notify();
-			}
-		}
+		//while(!Thread.interrupted()){
+			//synchronized (this) {
+			//	this.notify();
+			//}
+		//}
 	}
 	
-	public synchronized Gas serve(int Amount, int Type){ 
+	public Gas serve(int Amount, int Type){  //обслуживание клиента 
 		for(Gas d : dispensers){
 			if (d.type == Type){
 				return d;
@@ -31,7 +31,12 @@ public class Administrator implements Runnable{
 		return null;
 	}
 	
-	public synchronized void complain(Gas d){
+	public void complain(Gas d){
 		d.refill();
 	}
 }
+//если убрать все синхронайзд ничего не изменится
+//нет обращения машин к разделяемым ресурсам
+//заплатить операцию
+//поток кассира должен изменить состояние станции(вкл насос)
+//поток к потоку

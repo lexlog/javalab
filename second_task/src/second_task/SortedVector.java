@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.Vector;
 
 
-public class SortedVector implements ISortedVector, Iterable {
+public class SortedVector<T> implements ISortedVector, Iterable<T> {
 
-	public Object[] arr; // array of elements
+	public T[] arr; // array of elements
 	private int size; // size of array
 	private int maxSize; // max size of array
 
@@ -14,53 +14,52 @@ public class SortedVector implements ISortedVector, Iterable {
 		super();
 		this.size = 0;
 		this.maxSize = maxSize;
-		this.arr = new Object[maxSize];
+		this.arr = (T[]) new Object[maxSize];
 	}
-
+//ДОБАВИТЬ GENERICI
 	@Override
 	public void add(Comparable o) {
-		if (size == maxSize) {
+		if (size == maxSize) { //если вектор заполнен, выделяем в 2 раза больше памяти
 			resizeArray();
 		}		
 		int temp=0;
 		boolean flag=false;
 		for(int i=0;i<size;i++) {
-			if (o.compareTo(arr[i]) == -1) {
+			if (o.compareTo(arr[i]) == -1) { //функция сравнения - ищем, куда вставить
 				temp=i;
 				flag=true;
 				break;
 			}	
 		}
 		
-		if ( temp == 0 && flag == false) {
-			arr[size] = o;
+		if ( temp == 0 && flag == false) { // если добавляемый эл-т больше всех, то в конец
+			arr[size] =(T) o;
 		}
 		else {
-			for(int i=size;i>temp;i--) {
+			for(int i=size;i>temp;i--) { //сдвигаем и вставляем 
 				arr[i]=arr[i-1];	
 			}
-			arr[temp]=o;
+			arr[temp]=(T)o;
 		}
 		size++;
 	}
 
-	private void resizeArray() {
-		// TODO Auto-generated method stub
+	private void resizeArray() { //выделение памяти при заполнении вектора (динамичный)
 		int temp = maxSize * 2;
 		Object[] tmp = new Object[maxSize];
 		for (int i = 0; i < maxSize; i++) {
 			tmp[i] = arr[i];
 		}
-		arr = new Object[temp];
+		arr = (T[]) new Object[temp];
 
 		for (int i = 0; i < maxSize; i++) {
-			arr[i] = tmp[i];
+			arr[i] = (T) tmp[i];
 		}
 		maxSize = temp;
 	}
 
 	@Override
-	public void remove(int index) {
+	public void remove(int index) { //удал. со сдвигом
 		if (index <= size && index >= 0) {
 			for (int i=index;i<size;i++)
 			{
@@ -71,36 +70,33 @@ public class SortedVector implements ISortedVector, Iterable {
 	}
 
 	@Override
-	public Comparable get(int index) {
+	public Comparable get(int index) { //возврат значения по индексу
 		if (index <= size && index >= 0) {
 			return (Comparable)arr[index];
 		}
-		return -1;
+		return -1;//нет такого индекса
 	}
 
 	@Override
-	public int indexOf(Comparable o) {
+	public int indexOf(Comparable o) { // возврат индекса по значению
 		for (int i=0;i<size;i++) {
 			if (arr[i]==o)
 				return i;
 		}
-		return -1;
+		return -1;//нет такого элемента
 	}
 
 	@Override
-	public Iterator iterator() {
+	public Iterator iterator() { //итератор
 		return new MyIterator();
 	}
 	
-	private class MyIterator implements Iterator<Object>{
+	private class MyIterator implements Iterator<T>{
 
-		Object currentEl;
+		T currentEl;
 		int number = -1;
 		
-		public MyIterator() 
-		{
-			currentEl=arr[0]; 
-		}
+		
 		
 		@Override
 		public boolean hasNext() {
@@ -110,7 +106,7 @@ public class SortedVector implements ISortedVector, Iterable {
 		}
 
 		@Override
-		public Object next() {
+		public T next() {
 			currentEl = arr[++number];
 			return currentEl;
 		}
@@ -136,6 +132,14 @@ public class SortedVector implements ISortedVector, Iterable {
 		System.out.println(A.get(8));
 		System.out.println(A.get(-1));
 		System.out.println(A.get(2));
+		A.remove(0);
+		for (Object a : A) {
+			System.out.print(a);
+		}
+		System.out.println();
+		System.out.println(A.indexOf(55));
+		System.out.println(A.indexOf(3));
+		
 	}
 
 }

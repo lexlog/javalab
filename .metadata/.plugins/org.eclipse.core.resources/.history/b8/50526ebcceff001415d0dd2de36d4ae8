@@ -1,0 +1,11 @@
+package third_test;
+
+public class Pump {
+	
+	final int max = 100;//максимум 100
+	int curAmout = max;//текущее количество топлива в заправке
+
+	public Pump () {
+		
+	}
+}

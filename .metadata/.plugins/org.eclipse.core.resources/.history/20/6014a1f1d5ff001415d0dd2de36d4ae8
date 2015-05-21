@@ -1,0 +1,14 @@
+package third_test;
+
+import java.util.Random;
+
+public class Main {
+	public static void main(String[] args) throws Exception {
+		Admin adm = new Admin();
+		new Thread(adm).start();
+		
+		for(int i=0;i<20;i++) {
+			new Thread(new Car(adm,i)).start();
+		}
+	}
+}

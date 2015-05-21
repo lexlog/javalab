@@ -1,0 +1,28 @@
+package first_task;
+
+//import java.util.Scanner;
+import java.io.*;
+
+public class main {
+	public static void main(String args[]) throws IOException
+	   {
+	      InputStreamReader cin = null;
+	      int iter=0;
+	      try {
+	         cin = new InputStreamReader(System.in);
+	         System.out.println("Enter characters, 'q' to quit.");
+	         char c;
+	         do {
+	            c = (char) cin.read();
+	            iter++;
+	            
+	         } while(c != 'q' && iter < 63);
+	      }finally {
+	         if (cin != null) {
+	            cin.close();
+	         }
+	      }
+	   }
+	   
+}
+

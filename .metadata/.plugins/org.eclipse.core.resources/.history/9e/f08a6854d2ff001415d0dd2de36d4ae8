@@ -1,0 +1,15 @@
+package third_test;
+
+import java.util.Random;
+
+public class Main {
+	public static void main(String[] args) throws Exception {
+		Admin adm = new Admin();
+		new Thread(adm).start();
+		
+		int money= (new Random()).nextInt(310)+10; 
+		for(int i=0;i<20;i++) {
+			new Thread(new Car(money)).start();
+		}
+	}
+}

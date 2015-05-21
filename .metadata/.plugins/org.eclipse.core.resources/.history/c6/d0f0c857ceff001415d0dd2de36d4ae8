@@ -1,0 +1,18 @@
+package third_test;
+
+public class Admin implements Runnable{
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Admin () {
+		Pump pump1=new Pump();
+		Pump pump2=new Pump();
+		Pump pump3=new Pump();
+	}
+	
+
+}
