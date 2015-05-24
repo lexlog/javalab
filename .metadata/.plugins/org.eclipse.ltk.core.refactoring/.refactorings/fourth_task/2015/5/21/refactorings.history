@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;fourth_task.GUIClient&apos; to &apos;ClientG&apos;&#x0A;- Original project: &apos;fourth_task&apos;&#x0A;- Original element: &apos;fourth_task.GUIClient&apos;&#x0A;- Renamed element: &apos;fourth_task.ClientG&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;GUIClient&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;fourth_task{GUIClient.java[GUIClient" matchStrategy="1" name="ClientG" qualified="false" references="true" similarDeclarations="false" stamp="1432430829858" textual="false" version="1.0"/>
+</session>

@@ -17,18 +17,18 @@ public class Main {
 	            mas[iter]=c;
 	            iter++;
 	         } while(c != 'q' && iter < 63);
-	      } finally {
+	      }finally {
 	         if (cin != null) {
 	            cin.close();
 	         }
 	      }
-	      String str=new String(mas);
-	      str = str.replaceAll(" ", ""); //удаление всех пробелов
-	      str = str.replaceAll("\n", ""); // удаление всех переносов строки
-	      str = str.toLowerCase(); // преобразование в нижний регистр
-	      str = str.trim(); //удаление табуляции с начала и конца строки
+	      String str2=new String(mas);
+	      str2 = str2.replaceAll(" ", ""); //удаление всех пробелов
+	        str2 = str2.replaceAll("\n", ""); // удаление всех переносов строки
+	        str2 = str2.toLowerCase(); // преобразование в нижний регистр
+	        str2 = str2.trim(); //удаление табуляции с начала и конца строки
 	        
-	        System.out.println(str);		
+	        System.out.println(str2);		
 	   }
 	   
 }

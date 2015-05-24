@@ -17,7 +17,7 @@ public class Main {
 	            mas[iter]=c;
 	            iter++;
 	         } while(c != 'q' && iter < 63);
-	      } finally {
+	      }finally {
 	         if (cin != null) {
 	            cin.close();
 	         }
