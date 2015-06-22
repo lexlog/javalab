@@ -1,40 +1,38 @@
 package third_task;
-
 import java.util.Random;
 
-
 public class Car implements Runnable{
-	int gasNeeded = (new Random()).nextInt(110)+10; 
-	final int id = gasNeeded; // различаем клиентов по количеству топлива
-	final int gasType = (new Random()).nextInt(3) + 1;
+	int gasNeeded = (new Random()).nextInt(150)+10;
+	final int id = gasNeeded;
 	Administrator adm;
 	
 	public Car(Administrator a){
-		System.out.println(id+ ": New client, needed: "+gasNeeded+" of "+gasType+" type");
+		System.out.println(id+ ": New client, needed: "+gasNeeded);
 		adm = a;
 	}
 
 	@Override
 	public void run() {
-		Gas d;//номер колонки
+		Gas d;
 		int receivedAmount;
 		
-		d = adm.serve(gasNeeded, gasType);//получаем номер колонки
+		System.out.println(id + " Asking for service");
+		d = adm.serve();
+		System.out.println(id + " Got service");
 		
-		receivedAmount = d.drain(gasNeeded);//сколько реально получили
+		receivedAmount = d.drain(gasNeeded);
 		System.out.println(id + ": Client drained "+receivedAmount+" of fuel");
 					
-		while (receivedAmount != gasNeeded){ //пока не получили сколько надо
+		while (receivedAmount != gasNeeded){
 			gasNeeded = gasNeeded - receivedAmount;
 			System.out.println(id + ": Client needs "+gasNeeded+" more gas");
-			adm.complain(d); //жалуемся, что не долили
+			adm.complain(d);
 			System.out.println(id + ": Client complained to administrator");
 				
 			receivedAmount = d.drain(gasNeeded);
-			System.out.println(id + ": Client drained "+receivedAmount+" of fuel");		
+			System.out.println(id + ": Client drained "+receivedAmount+" of fuel");			
 		}
 		
 		System.out.println(id + ": Client served");
 	}
 }
-

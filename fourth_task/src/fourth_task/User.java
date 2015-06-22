@@ -5,7 +5,7 @@ import java.net.InetAddress;
 
 public class User {
 	private String name;
-	private InetAddress inetAddress;
+	private InetAddress inetAddress;//ip adr of local host
 	private int portNumber;
 	public User(InetAddress inetAddress, int portNumber, String name) {
 		super();

@@ -17,7 +17,6 @@ public class Car implements Runnable {
 	@Override
 	public void run() {
 		adm.payment(money, id, pumpNumber);	
-		
 	}
 
 }

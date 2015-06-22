@@ -1,4 +1,4 @@
-package third_task;
+
 public class Administrator implements Runnable{
 	final int dispensersAmount = 3;
 	Gas dispenser = new Gas();
