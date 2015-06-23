@@ -11,8 +11,7 @@ public class Administrator implements Runnable{
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-			
+			}			
 			synchronized (this) {
 				this.notifyAll();
 			}

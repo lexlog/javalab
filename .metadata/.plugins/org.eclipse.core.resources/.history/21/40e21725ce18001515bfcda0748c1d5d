@@ -1,0 +1,26 @@
+package third_task;
+
+class Gas {
+	final int max = 100;
+	int curAmout = max;
+	
+	int drain(int amount){
+			if (curAmout >= amount){
+				curAmout -= amount;
+				return amount;
+			}
+			int diff = curAmout;
+			curAmout = 0;
+			return diff;
+	}
+	
+	void refill(){
+			curAmout = max;
+	}
+	
+	protected void add(int amount){
+			if (curAmout < max){
+				curAmout += amount;
+			}
+	}
+}

@@ -5,6 +5,7 @@ class Gas {
 	int curAmout = max;
 	
 	int drain(int amount){
+		synchronized(this){
 			if (curAmout >= amount){
 				curAmout -= amount;
 				return amount;
@@ -12,6 +13,7 @@ class Gas {
 			int diff = curAmout;
 			curAmout = 0;
 			return diff;
+		}
 	}
 	
 	void refill(){

@@ -1,5 +1,7 @@
+
 package third_task;
 import java.util.Random;
+
 
 public class Car implements Runnable{
 	int gasNeeded = (new Random()).nextInt(150)+10;
@@ -21,9 +23,10 @@ public class Car implements Runnable{
 		System.out.println(id + " Got service");
 		
 		receivedAmount = d.drain(gasNeeded);
+		
 		System.out.println(id + ": Client drained "+receivedAmount+" of fuel");
 					
-		while (receivedAmount != gasNeeded){
+		while (receivedAmount != gasNeeded) {
 			gasNeeded = gasNeeded - receivedAmount;
 			System.out.println(id + ": Client needs "+gasNeeded+" more gas");
 			adm.complain(d);

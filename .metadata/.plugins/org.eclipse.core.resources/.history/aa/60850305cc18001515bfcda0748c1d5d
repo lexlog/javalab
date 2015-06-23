@@ -1,0 +1,41 @@
+package third_task;
+import java.util.Random;
+
+public class Car implements Runnable{
+	int gasNeeded = (new Random()).nextInt(150)+10;
+	final int id = gasNeeded;
+	Administrator adm;
+	
+	public Car(Administrator a){
+		System.out.println(id+ ": New client, needed: "+gasNeeded);
+		adm = a;
+	}
+
+	@Override
+	public void run() {
+		Gas d;
+		int receivedAmount;
+		
+		System.out.println(id + " Asking for service");
+		d = adm.serve();
+		System.out.println(id + " Got service");
+		
+		synchronized(d){
+			receivedAmount = d.drain(gasNeeded);
+		}
+		
+		System.out.println(id + ": Client drained "+receivedAmount+" of fuel");
+					
+		while (receivedAmount != gasNeeded){
+			gasNeeded = gasNeeded - receivedAmount;
+			System.out.println(id + ": Client needs "+gasNeeded+" more gas");
+			adm.complain(d);
+			System.out.println(id + ": Client complained to administrator");
+				
+			receivedAmount = d.drain(gasNeeded);
+			System.out.println(id + ": Client drained "+receivedAmount+" of fuel");			
+		}
+		
+		System.out.println(id + ": Client served");
+	}
+}

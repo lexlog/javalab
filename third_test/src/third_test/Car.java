@@ -2,21 +2,26 @@ package third_test;
 
 import java.util.Random;
 
-public class Car implements Runnable {
-	int money=(new Random()).nextInt(5100)+2530;
-	final int id; 
-	int pumpNumber=(new Random()).nextInt(3)+1; 
-	Admin adm;
+public class Car {
+	static Random _random = new Random();
+
+	Integer _name;
+	volatile Integer _desiredGas;
+	volatile Integer _currentGas;
+
+	static Car gen(){
+		return new Car(_random.nextInt(1000), _random.nextInt(10) + 5);
+	}
 	
-	public Car(Admin a,int n) {
-		adm=a;
-		id=n;
-		System.out.println("Client"+id+": Hi,I'm from Pump №"+pumpNumber+", have "+money+" money points");
+	private Car(int name, int desiredGas){
+		_name = name;
+		_desiredGas = desiredGas;
+		_currentGas = 0;
 	}
-
+	
 	@Override
-	public void run() {
-		adm.payment(money, id, pumpNumber);	
+	public String toString() {
+		return  "Car: " + _name + " want: " + _desiredGas + " have: " + _currentGas;
 	}
-
+	
 }

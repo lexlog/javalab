@@ -1,0 +1,22 @@
+package third_test;
+
+import java.util.Random;
+
+public class Car implements Runnable {
+	int money=(new Random()).nextInt(5100)+2530;
+	final int id; 
+	int pumpNumber=(new Random()).nextInt(3)+1; 
+	Admin adm;
+	
+	public Car(Admin a,int n) {
+		adm=a;
+		id=n;
+		System.out.println("Client"+id+": Hi,I'm from Pump №"+pumpNumber+", have "+money+" money points");
+	}
+
+	@Override
+	public void run() {
+		adm.payment(money, id, pumpNumber);	
+	}
+
+}
