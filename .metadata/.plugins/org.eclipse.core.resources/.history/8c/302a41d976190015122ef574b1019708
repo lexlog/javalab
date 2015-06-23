@@ -7,7 +7,7 @@ public class Car {
 
 	Integer _name;
 	volatile Integer _desiredGas;
-	volatile Integer _currentGas=0;
+	volatile Integer _currentGas;
 
 	static Car gen(){
 		return new Car(_random.nextInt(1000), _random.nextInt(10) + 5);
@@ -16,6 +16,7 @@ public class Car {
 	private Car(int name, int desiredGas){
 		_name = name;
 		_desiredGas = desiredGas;
+		_currentGas = 0;
 	}
 	
 	@Override

@@ -18,9 +18,4 @@ public class Car {
 		_desiredGas = desiredGas;
 	}
 	
-	@Override
-	public String toString() {
-		return  "Car: " + _name + " want: " + _desiredGas + " have: " + _currentGas;
-	}
-	
 }

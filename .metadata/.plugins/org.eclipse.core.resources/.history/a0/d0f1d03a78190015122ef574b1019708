@@ -2,6 +2,7 @@ package third_test;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class GasStand implements Runnable {
 
@@ -34,7 +35,7 @@ public class GasStand implements Runnable {
 					while (true) {
 						semaphore.acquire();
 						while (get_fuelLvl() != 100) {
-							Utill.pause(CAR_FILL_SPEED);
+							TimeUnit.MILLISECONDS.sleep(150);
 							System.out.println("refuel");
 							inc_fuelLvl();
 						}
@@ -50,7 +51,7 @@ public class GasStand implements Runnable {
 		while (true) {
 			Utill.pause(10);
 			while (!_cars.isEmpty()) {
-				Utill.pause(CAR_SWITCH_SPEED);
+				TimeUnit.MILLISECONDS.sleep(150);
 				try {
 					servise(_cars.peek());
 					_cars.remove();
@@ -64,7 +65,7 @@ public class GasStand implements Runnable {
 
 	private void servise(Car car) throws InterruptedException {
 		while (car._currentGas != car._desiredGas) {
-			Utill.pause(CAR_FILL_SPEED);
+			TimeUnit.MILLISECONDS.sleep(150);
 			if (get_fuelLvl() == 0) {
 				semaphore.release();
 				semaphore2.acquire();

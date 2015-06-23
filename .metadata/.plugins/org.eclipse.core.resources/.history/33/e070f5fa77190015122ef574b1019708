@@ -8,7 +8,7 @@ public class GasStand implements Runnable {
 	private static final int CAR_SWITCH_SPEED = 200;
 	private static final int CAR_FILL_SPEED = 150;
 	
-	
+	static final Integer FUEL_LVL_ISO = 100;
 	private String _name;
 	private View _view;
 	LinkedBlockingQueue<Car> _cars;
@@ -33,7 +33,7 @@ public class GasStand implements Runnable {
 				try {
 					while (true) {
 						semaphore.acquire();
-						while (get_fuelLvl() != 100) {
+						while (get_fuelLvl() != GasStand.FUEL_LVL_ISO) {
 							Utill.pause(CAR_FILL_SPEED);
 							System.out.println("refuel");
 							inc_fuelLvl();
